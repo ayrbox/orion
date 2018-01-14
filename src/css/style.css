@@ -1,0 +1,86 @@
+body {
+  margin:0;
+  padding:0;
+}
+
+
+
+.container {  
+  margin: 0 auto;
+  max-width: 1170px;
+  width: 80vw;
+}
+
+
+.login-form {
+  margin:0 auto;
+  padding:90px;
+  border:1px solid red;  
+  width:250px;
+  color: red;
+}
+
+
+
+
+.main-header {
+  text-align:center;
+  background-color: red;
+  color: white;
+  padding:8px 16px;
+}
+
+
+
+
+.register-form {
+  margin:0 auto;
+  padding:30px 90px;
+  border:1px solid red;  
+  width:400px;
+  color: red;
+}
+
+
+
+
+
+.message {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-radius: .25rem;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  text-align:center;
+}
+
+
+
+
+
+.menu {  
+  list-style:none;
+  padding:0;
+  background:red;
+}
+
+.menu li {
+  list-style:none;
+  display:inline-block;
+}
+
+.menu li a {
+  background-color: red;
+  color: white;
+  border-right:1px solid white;
+  padding:8px 16px;
+  text-decoration: none;
+  display:block;
+}

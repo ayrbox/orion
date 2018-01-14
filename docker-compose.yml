@@ -1,0 +1,20 @@
+version: "2"
+services:
+  orion-db:
+    image: mariadb
+    volumes:
+      - ~/beans.file/data/mdb:/var/lib/mysql
+    ports:
+      - "8081:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ChangeMeIfYouWant
+  orion-app:
+    image: eriksencosta/php-dev
+    volumes:
+      - ./src:/var/www
+    ports:
+      - "8080:80"
+    links:
+      - orion-db:mysql
+    environment:
+      WORDPRESS_DB_PASSWORD: ChangeMeIfYouWant
