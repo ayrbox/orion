@@ -38,4 +38,4 @@ The project is far from ready to implement in real worls. Require further develo
 
 3. Send Email and/or Mobile Notification to register donor about any new blood donation program.
 
-4. Algorithem to suggest the search can be implemnted if particular blood is not available in particular area. (e.g Blood is available Pulchowk if the people is searching in Kathmandu). 
+4. Algorithm to suggest the search can be implemnted if particular blood is not available in particular area. (e.g Blood is available Pulchowk if the people is searching in Kathmandu). 
