@@ -33,6 +33,15 @@ to learn symfony framework with same (or enchanced) features.
 1. Run the website in the browser.
 
 
+## Dev Environment
+
+Run local server
+```bash
+php -S localhost:9090 -t ./public 
+```
+> Make sure path for public folder is correct 
+
+
 ## Conclusion Suggestion
 The project is far from ready to implement in real worls. Require further development and improvment.
 
