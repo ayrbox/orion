@@ -9,6 +9,10 @@ Website users can go to website and search for blood available in the reserves.
 Users can also register as donor.
 
 
+## Background
+The project was built to demostrate PHP skill for college dessertation with zero framework. Project is used
+to learn symfony framework with same (or enchanced) features.
+
 ## Features:
 1. Search for blood avaibility
 2. Register as Donor
