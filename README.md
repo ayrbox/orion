@@ -2,7 +2,7 @@
 
 ## Summary
 Search portal for orion blood bank. Many blood reserves can be maintained
-and availity of blood in each reserve.
+and avaibility of blood in each reserve.
 
 Website users can go to website and search for blood available in the reserves.
 
@@ -52,3 +52,30 @@ The project is far from ready to implement in real worls. Require further develo
 3. Send Email and/or Mobile Notification to register donor about any new blood donation program.
 
 4. Algorithm to suggest the search can be implemnted if particular blood is not available in particular area. (e.g Blood is available Pulchowk if the people is searching in Kathmandu). 
+
+
+
+Entities
+- Admin Users
+- Donor Registration
+- Blood Type
+- Blood Reserves (GPS Location)
+- Reserve Inventory 
+- Blood Donation Events
+
+Admin Use Case
+Admin has page check-in / check-out blood with expiry entry. This maintains inventory (NOTE: event dispatch to count summary).
+
+Admin can create donation events with description, date, time duration.
+
+
+Donor Use Case
+Donor can RSVP upcoming donation program event.
+Donor can search for nearby reserve for blood.
+
+/(home)
+/registration 
+/login
+/admin
+
+
