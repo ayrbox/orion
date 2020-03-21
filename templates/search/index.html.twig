@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+<!-- Create Form Builder -->
+<div class="row">
+    <div class="col-12">
+        <form>
+            <div class="form-group">
+                <label for="bloodtype">Blood Type:</label>
+                <select class="form-control" id="bloodtype" aria-describedby="bloodtypehelp">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <small id="bloodtypehelp" class="form-text text-muted">Please select blood type group.</small>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-12">
+        {% if (results) %}
+            <div class="alert alert-warning">
+                Blood is available in following reserves: 
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>Reserve name</th>
+                        <th>Address</th>
+                        <th>Contact No</th>
+                        <th>Email</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for reserve in results %}
+                    <tr>
+                        <td>{{ reserve.name }}</td>
+                        <td>{{ reserve.address }}</td>
+                        <td>{{ reserve.contact_no }}</td>
+                        <td>{{ reserve.email }}</td>
+                        <td>{{ reserve.note }} </td>
+                    </tr>  
+
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-danger">
+                Blood not found in any reserve. 
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
