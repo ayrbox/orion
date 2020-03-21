@@ -6,6 +6,12 @@
 <!-- Create Form Builder -->
 <div class="row">
     <div class="col-12">
+        {{ form_start(searchForm) }}
+            {{ form_widget(searchForm) }}
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+        {{ form_end(searchForm) }}
         <form>
             <div class="form-group">
                 <label for="bloodtype">Blood Type:</label>
@@ -31,7 +37,7 @@
     <div class="col-12">
         {% if (results) %}
             <div class="alert alert-warning">
-                Blood is available in following reserves: 
+                Blood is available in following reserves:
             </div>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -50,14 +56,14 @@
                         <td>{{ reserve.contact_no }}</td>
                         <td>{{ reserve.email }}</td>
                         <td>{{ reserve.note }} </td>
-                    </tr>  
+                    </tr>
 
                 {% endfor %}
                 </tbody>
             </table>
         {% else %}
             <div class="alert alert-danger">
-                Blood not found in any reserve. 
+                Blood not found in any reserve.
             </div>
         {% endif %}
     </div>

@@ -19,9 +19,28 @@ class ReserveBloodStatusRepository extends ServiceEntityRepository
         parent::__construct($registry, ReserveBloodStatus::class);
     }
 
-    // /**
-    //  * @return ReserveBloodStatus[] Returns an array of ReserveBloodStatus objects
-    //  */
+    public function findByReserveLocation($location) {
+//        return $this->createQueryBuilder('r')
+//            ->andWhere('r.exampleField = :val')
+//            ->setParameter('val', $location)
+//            ->orderBy('r.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult();
+
+        return $this->createQueryBuilder()
+            ->select('a.reserve_id, b.name, b.address, b.contact_no, b.email, a.note')
+            ->from('ReserveBloodStatus', 'a')
+            ->from('Reserves', 'b')
+            ->join('a.reserve_id', 'b.id')
+            ->where('b.address like %'.$location.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+     /**
+      * @return ReserveBloodStatus[] Returns an array of ReserveBloodStatus objects
+      */
     /*
     public function findByExampleField($value)
     {
