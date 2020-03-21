@@ -14,7 +14,7 @@ services:
   #     - db
 
   db:
-    image: mysql:latest
+    image: mysql:5.7
     volumes:
       - ./docker/db/orion-db.sql:/docker-entrypoint-initdb.d/orion-db.sql:cached
     ports:
