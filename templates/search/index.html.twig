@@ -12,24 +12,9 @@
                 Search
             </button>
         {{ form_end(searchForm) }}
-        <form>
-            <div class="form-group">
-                <label for="bloodtype">Blood Type:</label>
-                <select class="form-control" id="bloodtype" aria-describedby="bloodtypehelp">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-                <small id="bloodtypehelp" class="form-text text-muted">Please select blood type group.</small>
-            </div>
-            <div class="form-group">
-                <label for="location">Location:</label>
-                <input type="text" class="form-control" id="location">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        <pre>
+            {{ testResult | json_encode(constant('JSON_PRETTY_PRINT')) }}
+        </pre>
     </div>
 </div>
 

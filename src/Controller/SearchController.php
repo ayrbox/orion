@@ -3,17 +3,21 @@
 namespace App\Controller;
 
 use App\Form\SearchFormType;
+use App\Repository\ReserveBloodStatusRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SearchController extends AbstractController {
 
+    /**
+     * @var ReserveBloodStatusRepositoryry
+     */
     private $statusRepository;
 
     public function __construct(ReserveBloodStatusRepository $statusRepository)
     {
-        $this->statusRepository => $statusRepository;
+        $this->statusRepository = $statusRepository;
     }
 
 
@@ -48,19 +52,21 @@ class SearchController extends AbstractController {
 
         $form = $this->createForm(SearchFormType::class);
 
+        $resultTest = null;
         $form->handleRequest($request);
         if($form->isSubmitted()) {
             $formData = $form->getData();
             $bloodType = $formData["blood_type"];
             $location = $formData["location"];
 
-            $this->statusRepository->find
+            $resultTest = $this->statusRepository->searchByLocation($location);
 
         }
 
         return $this->render('search/index.html.twig', [
             'searchForm' => $form->createView(),
-            'results' => $results
+            'results' => $results,
+            'testResult' => $resultTest
         ]);
     }
 }
