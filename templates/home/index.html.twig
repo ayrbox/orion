@@ -1,0 +1,56 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Welcome to Orion Blood Bank</h1>
+      <p>
+        Welcome to your online portal for Orion Blood Bank. We provide
+        up to date information about blood reserve. We help find avaibility
+        blood in our blood reserve quickly.      
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Search</h4>
+      <p>
+        <a href="{{ path('search') }}">
+        Click here
+        </a>
+        to search for blood in our blood bank reserves.
+      </p>
+    </div>
+  </div>
+
+  <hr>
+
+
+
+
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>Register </h1>
+      <p>
+        Please register as blood donor and we will keep you informed
+        about any blood donation program that is being held
+        near you. 
+      </p>
+      <p>
+        <a href="register.php">
+        Click here </a> to register.
+      </p>
+    </div>
+    <div class="col-sm-6">
+      <h2>Admin login</h2>
+      <p>    
+        Please <a href="/admin/index.php">click here</a> to signin into admin portal.
+        You have to be authorised and should have valid username and password
+        to login.
+      </p>
+    </div>
+  </div>
+
+{% endblock %}

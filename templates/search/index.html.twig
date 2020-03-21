@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+<!-- Create Form Builder -->
+<div class="row">
+    <div class="col-12">
+        {{ form_start(searchForm) }}
+            {{ form_widget(searchForm) }}
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+        {{ form_end(searchForm) }}
+        <pre>
+            {{ testResult | json_encode(constant('JSON_PRETTY_PRINT')) }}
+        </pre>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-12">
+        {% if (results) %}
+            <div class="alert alert-warning">
+                Blood is available in following reserves:
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>Reserve name</th>
+                        <th>Address</th>
+                        <th>Contact No</th>
+                        <th>Email</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for reserve in results %}
+                    <tr>
+                        <td>{{ reserve.name }}</td>
+                        <td>{{ reserve.address }}</td>
+                        <td>{{ reserve.contact_no }}</td>
+                        <td>{{ reserve.email }}</td>
+                        <td>{{ reserve.note }} </td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-danger">
+                Blood not found in any reserve.
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
