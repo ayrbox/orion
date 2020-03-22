@@ -22,14 +22,14 @@ class ReserveBloodStatus
     private $note;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BloodTypes")
-     * @ORM\JoinColumn(name="blood_type_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\BloodTypes", inversedBy="blood_types")
+     * @ORM\JoinColumn(name="blood_type_id", referencedColumnName="id", nullable=false)
      */
     private $bloodType;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Reserves")
-     * @ORM\JoinColumn(name="reserve_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Reserves", inversedBy="reserves")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $Reserve;
 

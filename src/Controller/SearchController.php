@@ -26,47 +26,23 @@ class SearchController extends AbstractController {
      */
     public function index(Request $request) {
 
-        $results = [
-            array(
-                "name" => "somehing thins",
-                "address" => "ktm, nepal",
-                "contact_no" => 'asldfk',
-                "email" => "test@hotmial.com",
-                "note" => "laskjdf aljfd aksjfas fkajs f"
-            ),
-            array(
-                "name" => "somehing thins",
-                "address" => "ktm, nepal",
-                "contact_no" => 'asldfk',
-                "email" => "test@hotmial.com",
-                "note" => "laskjdf aljfd aksjfas fkajs f"
-            ),
-            array(
-                "name" => "somehing thins",
-                "address" => "ktm, nepal",
-                "contact_no" => 'asldfk',
-                "email" => "test@hotmial.com",
-                "note" => "laskjdf aljfd aksjfas fkajs f"
-            )
-        ];
+        $results = null;
 
         $form = $this->createForm(SearchFormType::class);
-
-        $resultTest = null;
         $form->handleRequest($request);
         if($form->isSubmitted()) {
             $formData = $form->getData();
             $bloodType = $formData["blood_type"];
             $location = $formData["location"];
-
-            $resultTest = $this->statusRepository->searchByLocation($location);
-
+            $results= $this->statusRepository->searchByLocation(
+                $bloodType,
+                $location
+            );
         }
 
         return $this->render('search/index.html.twig', [
             'searchForm' => $form->createView(),
             'results' => $results,
-            'testResult' => $resultTest
         ]);
     }
 }

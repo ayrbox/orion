@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\BloodTypes;
 use App\Entity\ReserveBloodStatus;
 use App\Entity\Reserves;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -24,15 +25,14 @@ class ReserveBloodStatusRepository extends ServiceEntityRepository {
      * @param $location
      * @return mixed
      */
-    public function searchByLocation($location) {
-        return $this->createQueryBuilder('a')
-            ->select('a.Reserve')
-            ->select('b.name, b.address, b.contact_no, b.email, a.note')
-            ->innerJoin(
-                Reserves::class,
-                'b'
-            )
-            ->where('b.address like \'%'.$location.'%\'')
+    public function searchByLocation(BloodTypes $bloodType, $location) {
+        return $this->createQueryBuilder('A')
+            ->select('A.id, B.name, B.address, B.contact_no, B.email, A.note')
+            ->innerJoin( Reserves::class, 'B', JOIN::WITH, 'B.id = A.Reserve')
+            ->where('A.bloodType = :bloodType')
+            ->andWhere('B.address LIKE :location')
+            ->setParameter('bloodType', $bloodType)
+            ->setParameter('location', '%'.$location.'%')
             ->getQuery()
             ->getResult();
     }
