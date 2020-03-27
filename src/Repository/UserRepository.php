@@ -64,4 +64,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
     */
+
+    public function save(UserInterface $user): ?bool {
+        $this->_em->persist($user);
+        $this->_em->flush();
+        return true;
+    }
 }
