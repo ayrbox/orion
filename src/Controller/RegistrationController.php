@@ -42,7 +42,7 @@ class RegistrationController extends AbstractController
             $password = $formData["password"];
 
             $user = new User();
-            $user->setRoles(['DONOR']);
+            $user->setRoles(['ROLE_DONOR']);
             $user->setEmail($email);
             $user->getSalt();
 
