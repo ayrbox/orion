@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -20,10 +21,12 @@ class RegistrationController extends AbstractController
     /**
      * RegistrationController constructor.
      * @param UserRepository $userRepository
+     * @param UserPasswordEncoderInterface $passwordEncoder
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->userRepository = $userRepository;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     /**
@@ -41,7 +44,10 @@ class RegistrationController extends AbstractController
             $user = new User();
             $user->setRoles(['DONOR']);
             $user->setEmail($email);
-            $user->setPassword($password);
+            $user->getSalt();
+
+            $encodedPassword = $this->passwordEncoder->encodePassword($user, $password);
+            $user->setPassword($encodedPassword);
 
             $this->userRepository->save($user);
         }
